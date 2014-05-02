@@ -11,5 +11,5 @@ Install through [Package Control](https://sublime.wbond.net/) or clone this repo
 Usage
 -----
 
-* Mac: Select some text and use `CMD + SHIFT + C` instead of normal `CMD + C`, the dpaste URL will be copied to your clipboard and you can use `ctrl + V` to paste right away
-* Others: Use `CTRL + SHIFT + C` instead
+* Mac: Select some text and use `CMD + SHIFT + C` instead of normal `CMD + C`, the dpaste URL will be copied to your clipboard and you can use `CMD + V` to paste right away.
+* Others: Use `CTRL + SHIFT + C` (and of course `CTRL + V` to paste) instead.
