@@ -16,7 +16,7 @@ SYNTAX_DICT = {
     'go': 'go',
     'xml': 'xml',
     'erl': 'erlang',
-    'py': 'python',
+    'py': 'python3',
     'dart': 'dart',
     'nginx': 'nginx',
     'bat': 'bat',
@@ -72,15 +72,16 @@ class DpasteCommand(sublime_plugin.TextCommand):
         return SYNTAX_DICT.get(ext, 'text')
 
     def run(self, edit):
-        content = u''
-
         # get the content from selection
-        for region in self.view.sel():
-            if not region.empty():
-                # insert new line if there are multiple selections
-                if content:
-                    content += '\r\n'
-                content += self.view.substr(region)
+        content = '\r\n'.join([
+            self.view.substr(region)
+            for region in self.view.sel()
+            if not region.empty()
+        ])
+
+        # if nothing is selected, get the whole file content
+        if not content:
+            content = self.view.substr(sublime.Region(0, self.view.size()))
 
         if content:
             dpaste_url = ''
@@ -92,12 +93,13 @@ class DpasteCommand(sublime_plugin.TextCommand):
                 }).encode('utf8'))
                 dpaste_url = response.geturl()
             except:
-                sublime.status_message('dpaste-sublime error: Request error')
+                sublime.status_message('Dpaste Sublime error: Request error')
 
+            # copy to clipboard if everything is fine
             if dpaste_url != '':
                 sublime.set_clipboard(dpaste_url)
                 sublime.status_message(
-                    'dpaste URL copied to clipboard: ' + dpaste_url
+                    'Dpaste URL copied to clipboard: ' + dpaste_url
                 )
         else:
-            sublime.status_message('dpaste-sublime error: Nothing selected')
+            sublime.status_message('Dpaste Sublime error: Nothing selected')
