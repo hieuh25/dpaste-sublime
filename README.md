@@ -1,7 +1,7 @@
 Dpaste Sublime Plugin
 ======================
 
-This [Sublime Text](http://www.sublimetext.com) plugin is for copy-pasting code quickly to [dpaste](http:/dpaste.com), it will return the dpaste URL to the clipboard.
+This [Sublime Text](http://www.sublimetext.com) plugin is for copy-pasting code quickly to [dpaste](http://dpaste.com), it will return the dpaste URL to the clipboard.
 
 Installation
 ------------
