@@ -91,7 +91,7 @@ class DpasteCommand(sublime_plugin.TextCommand):
                     'content': content,
                     'syntax': self._get_syntax_from_file_extension()
                 }).encode('utf8'))
-                dpaste_url = response.geturl()
+                dpaste_url = response.headers['Location']
             except:
                 sublime.status_message('Dpaste Sublime error: Request error')
 
